@@ -34,33 +34,41 @@ int main(int argc, char *argv[])
 		sscanf(argv[2], "%d", &j);
 		sscanf(argv[3], "%d", &k);
 		
-		//Loading tensor T1 with random int values
-		printf("\n\nLoading tensor T1. . .\n");
-		tensorLoad(t1, i, j, k);
+		if((i < 0 || i > RMAX) || (j < 0 || j > CMAX) || (k < 0 || k > PMAX))
+		{
+			printf("\nERROR! Index out of bound!\n\n");
+		}
 		
-		//Loading tensor T2 with random int values
-		printf("\n\nLoading tensor T2. . .\n");
-		tensorLoad(t2, i, j, k);
-		
-		//Printing values of tensor T1 on cli
-		printf("\n\nTensor T1:\n");
-		tensorPrint(t1, i, j, k);
-		
-		printf("\n\n");
-		
-		//Printing values of tensor T2 on cli
-		printf("Tensor T2:\n");
-		tensorPrint(t2, i, j, k);
+		else
+		{
+			//Loading tensor T1 with random int values
+			printf("\n\nLoading tensor T1. . .\n");
+			tensorLoad(t1, i, j, k);
+			
+			//Loading tensor T2 with random int values
+			printf("\n\nLoading tensor T2. . .\n");
+			tensorLoad(t2, i, j, k);
+			
+			//Printing values of tensor T1 on cli
+			printf("\n\nTensor T1:\n");
+			tensorPrint(t1, i, j, k);
+			
+			printf("\n\n");
+			
+			//Printing values of tensor T2 on cli
+			printf("Tensor T2:\n");
+			tensorPrint(t2, i, j, k);
 
-		//Copying tensor T2 into tensor T1
-		printf("\n\nCopying tensor T2 into T1. . .\n");
-		tensorCopy(t1, t2, i, j, k);
+			//Copying tensor T2 into tensor T1
+			printf("\n\nCopying tensor T2 into T1. . .\n");
+			tensorCopy(t1, t2, i, j, k);
 
-		printf("\n\n");
+			printf("\n\n");
 
-		//Printing new tensor T1 equal to T2
-		printf("New Tensor T1 = T2:\n");
-		tensorPrint(t1, i, j, k);
+			//Printing new tensor T1 equal to T2
+			printf("New Tensor T1 = T2:\n");
+			tensorPrint(t1, i, j, k);
+		}
 	}
 
 	return 0;
